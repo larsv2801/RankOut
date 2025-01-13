@@ -1,0 +1,28 @@
+{
+    "name": "RankOut",
+    "short_name": "RankOut",
+    "description": "Rank up while working out",
+    "start_url": "/RankOut/index.html",
+    "background_color": "#f7f7ff",
+    "theme_color": "f7f7ff",
+    "display": "fullscreen",
+    "orientation": "portrait",
+    "icons": [
+        {
+            "src": "rankoutlogo192.png",
+            "sizes": "192x192",
+            "type": "image/jpeg"
+        },
+        {
+            "src": "rankoutlogo512.png",
+            "sizes": "512x512",
+            "type": "image/jpeg",
+            "purpose": "maskable"
+        },
+         {
+            "src": "rankoutlogo144.png",
+            "sizes": "144x144",
+            "type": "image/png"
+        }
+    ]
+}
