@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body{
+    background-color: #f7f7ff;
+    align-items: center;
+    justify-content: center;
+    margin:0;
+    padding:0;
+    font-family:arial;
+    border-radius:5px;
+    transition:0.5s;
+}
+
+#rankedicon {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition:0.5s;
+}
+#rankedfoto{
+aspect-ratio: 1 / 1;
+width:30vw;
+position:absolute;
+left:50%;
+top:12dvh;
+transform:translate(-50%,-50%);
+transition:0.5s;
+}
+progress {
+  border-radius: 50px; 
+  width: 40vw;
+  height: 3.5vw;
+  border:#f2f2f2 1.5px solid;
+  position:absolute;
+  left:50vw;
+top:calc(12dvh + 22.5vw);
+transform:translate(-50%,-50%);
+transition:0.5s;
+}
+progress::-webkit-progress-bar {
+  background-color: white;
+  border-radius: 50px;
+  transition:0.5s;
+}
+progress::-webkit-progress-value {
+  background-color: #c26634;
+  border-radius: 50px;
+  transition:0.5s;
+}
+
+.quest{
+    width:65vw;
+    height:15vw;
+    border-radius:15px;
+    background-color:white;
+    padding-left:3vw;
+    /*justify-content:center;*/
+    align-items:center;
+    display:flex;
+    transition:0.5s;
+}
+#quests{
+    position:absolute;
+    top:50dvh;
+    left:50%;
+    transform:translate(-50%,-50%);
+    justify-content:center;
+    align-items:center;
+    display:flex;
+    gap:5vw;
+    flex-direction:column;
+    transition:0.5s;
+}
+h3{
+text-align:right;
+margin-left:34%;
+transition:0.5s;
+}
+h2{
+text-align:left;
+transition:0.5s;
+}
+.icoon{
+    margin-left:1vw;
+    width:5.5vw;
+    height:5.5vw;
+}
+</style>
+</head>
+<body onload="lod();">
+    <div id="ranked">
+        <div id="rankedfoto">
+            <img id="rankedicon" src="https://mmonster.co/media/a6/95/18/1715773621/fortnite-bronze-2.webp">
+        </div>
+    </div>
+    <progress id="rankedprogress"max="100" value="0"></progress>
+
+ <div id="quests">
+
+    <div onclick="veranderquest('1')" class="quest" id="q1">
+        <h2 id="tekst1">3 push ups</h2>
+        <h3 id="punten1">3</h3>
+        <img class="icoon" id="icoon1" src="https://cdn-icons-png.freepik.com/512/4315/4315499.png">
+    </div>
+
+    <div onclick="veranderquest('2')" class="quest" id="q2">
+        <h2 id="tekst2">3 push ups</h2>
+        <h3 id="punten2">3</h3>
+        <img class="icoon" id="icoon2" src="https://cdn-icons-png.freepik.com/512/4315/4315499.png">
+    </div>
+
+    <div onclick="veranderquest('3')" onmouseenter="veranderquest('3')"class="quest" id="q3">
+        <h2 id="tekst3">3 push ups</h2>
+        <h3 id="punten3">3</h3>
+        <img onclick="veranderquest('3')" class="icoon" id="icoon3" src="https://cdn-icons-png.freepik.com/512/4315/4315499.png">
+    </div>
+ </div>
+
+ <script>
+    var rankedscore = 0;
+    var welkequestnummer = 4;
+    var welkerank = 0;
+
+    console.log("hey");
+    function veranderquest(welkeq){
+      console.log("hey");
+      const requestOptions = {
+  method: "GET",
+  redirect: "follow"
+};
+
+fetch(`https://gravel-spiffy-floss.glitch.me/q${welkequestnummer}`, requestOptions)
+.then((response) => response.json())
+                .then((result) => {
+                  console.log("tekst" + welkeq);
+                  document.getElementById("tekst" + welkeq).innerHTML = `${result.titel}`;
+                  document.getElementById("punten" + welkeq).innerHTML = `${result.punten}`;
+                  extrapunten(result.punten);
+                  sve();
+                })
+        welkequestnummer++;
+        
+    }
+    
+    function extrapunten(pntn){
+    rankedscore += pntn;
+    document.getElementById("rankedprogress").value = rankedscore;
+    if(rankedscore > 99){
+    rankedscore = 0;
+    document.getElementById("rankedprogress").value = rankedscore;
+    welkerank++;
+    console.log(welkerank);
+  }
+    if(welkerank === 1){
+    document.getElementById("rankedicon").src = "https://dlc.channel3.gg/img/answers/li-51_FortniteRanks-5-20230518155834.png";
+    } else if (welkerank === 2) {
+    document.getElementById("rankedicon").src = "https://gametree.me/wp-content/uploads/2024/05/image-10-150x150.png";
+    }
+    sve();
+    }
+
+    function sve() {
+      localStorage.setItem("rankprogress", rankedscore);
+      localStorage.setItem("rank", welkerank);
+      console.log(welkerank);
+      localStorage.setItem("quests", welkequestnummer);
+    }
+    function lod(){
+      rankedscore = parseInt(localStorage.getItem('rankprogress')) || 0;
+  welkerank = parseInt(localStorage.getItem('rank')) || 0;
+  console.log(welkerank);
+  welkequestnummer = parseInt(localStorage.getItem('quests')) || 4;
+      if(rankedscore){
+        extrapunten(0);
+      }
+      if(welkequestnummer){
+        laadquests('1');
+        laadquests('2');
+        laadquests('3');
+      }
+    }
+
+    function laadquests(welkeq){
+      const requestOptions = {
+  method: "GET",
+  redirect: "follow"
+};
+
+fetch(`https://gravel-spiffy-floss.glitch.me/q${welkequestnummer}`, requestOptions)
+.then((response) => response.json())
+                .then((result) => {
+                  document.getElementById("tekst" + welkeq).innerHTML = `${result.titel}`;
+                  document.getElementById("punten" + welkeq).innerHTML = `${result.punten}`;
+                })
+        welkequestnummer++;
+        
+    }
+ </script>
+</body>
+</html>
