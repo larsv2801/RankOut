@@ -6,7 +6,7 @@
     "start_url": "/RankOut/index.html",
     "background_color": "#f7f7ff",
     "theme_color": "#f7f7ff",
-    "display": "fullscreen",
+    "display": "standalone",
     "orientation": "portrait",
     "icons": [
         {
