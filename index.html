@@ -63,6 +63,24 @@ progress::-webkit-progress-value {
     align-items:center;
     display:flex;
     transition:0.5s;
+    transform: translateY(20px);
+    animation: fadeIn 0.8s ease-out;
+}
+.quest:active {
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+.oefening {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeIn 0.8s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 #quests{
     position:absolute;
@@ -89,9 +107,8 @@ transition:0.5s;
     margin-left:1vw;
     width:5.5vw;
     height:5.5vw;
-    transition:0.5s;
 }
-    .oefening{
+.oefening{
 width:20vw;
 height:20vw;
 border-radius:15px;
@@ -102,6 +119,11 @@ min-width:150px;
 text-align:right;
 padding:1vw;
 flex-wrap:wrap;
+transition:0.5s;
+}
+.oefening:active {
+    transform: scale(1.15);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 #oefeningen{
 width:100vw;
