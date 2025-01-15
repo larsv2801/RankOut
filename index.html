@@ -91,6 +91,43 @@ transition:0.5s;
     height:5.5vw;
     transition:0.5s;
 }
+    .oefening{
+width:20vw;
+height:20vw;
+border-radius:15px;
+background-color:white;
+display:flex;
+flex-direction:column;
+min-width:150px;
+text-align:right;
+padding:1vw;
+flex-wrap:wrap;
+}
+#oefeningen{
+width:100vw;
+height:40vh;
+display:flex;
+padding:0;
+margin:0;
+gap:5px;
+flex-wrap:wrap;
+justify-content:center;
+align-items:center;
+margin-top:90vh;
+}
+.oefening img{
+width:auto;
+height:18vw;
+border-radius:5px;
+margin-top:1vw;
+max-width: 60%;
+}
+.oefening p{
+font-family:arial;
+margin-right:2vw;
+margin-top:-11vw;
+font-size:3.5vw;
+}
 </style>
 </head>
 <body onload="lod();">
@@ -121,7 +158,35 @@ transition:0.5s;
         <img onclick="veranderquest('3')" class="icoon" id="icoon3" src="https://cdn-icons-png.freepik.com/512/4315/4315499.png">
     </div>
  </div>
-
+ <br>
+<br>
+<br>
+<div id="oefeningen">
+  <div class="oefening" id="plank">
+  <img src="https://cdn.shopify.com/s/files/1/0269/5551/3900/files/Plank_3a82d566-9cb2-4c20-b301-bc8bd635c4d1_600x600.png?v=1612138431">
+  <p>plank</p>
+  </div>
+  <div class="oefening" id="push-ups">
+  <img src="https://cdn.shopify.com/s/files/1/0269/5551/3900/files/Push-Ups_600x600.png?v=1640121436">
+  <p>push-ups</p>
+  </div>
+  <div class="oefening" id="lunges">
+  <img src="https://cdn.shopify.com/s/files/1/0269/5551/3900/files/Lunge_600x600.png?v=1612138903">
+  <p>lunges</p>
+  </div>
+  <div class="oefening" id="squats">
+  <img src="https://cdn.shopify.com/s/files/1/0269/5551/3900/files/Squat_d752e42d-02ba-4692-b300-c6e67ad5a4f5_600x600.png?v=1612138811">
+  <p>squats</p>
+  </div>
+  <div class="oefening" id="burpees">
+  <img src="https://cdn.shopify.com/s/files/1/0269/5551/3900/files/Burpees_600x600.png?v=1640121232">
+  <p>burpees</p>
+  </div>
+  <div class="oefening" id="wall-sit">
+  <img src="https://cdn.shopify.com/s/files/1/0269/5551/3900/files/Wall-Sit_600x600.png?v=1655224007">
+  <p>wall sit</p>
+  </div>
+  </div>
  <script>
     var rankedscore = 0;
     var welkequestnummer = 4;
