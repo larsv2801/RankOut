@@ -2,9 +2,10 @@
     "name": "RankOut",
     "short_name": "RankOut",
     "description": "Rank up while working out",
+    "categories": ["health", "lifestyle"],
     "start_url": "/RankOut/index.html",
     "background_color": "#f7f7ff",
-    "theme_color": "f7f7ff",
+    "theme_color": "#f7f7ff",
     "display": "fullscreen",
     "orientation": "portrait",
     "icons": [
