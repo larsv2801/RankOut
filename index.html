@@ -67,7 +67,6 @@ progress::-webkit-progress-value {
     align-items:center;
     display:flex;
     transition:0.5s;
-    transform: translateY(20px);
     animation: fadeIn 0.8s ease-out;
 }
 .quest:active {
@@ -76,14 +75,12 @@ progress::-webkit-progress-value {
 }
 .oefening {
     opacity: 0;
-    transform: translateY(20px);
     animation: fadeIn 0.8s ease-out forwards;
 }
 
 @keyframes fadeIn {
     to {
         opacity: 1;
-        transform: translateY(0);
     }
 }
 #quests{
